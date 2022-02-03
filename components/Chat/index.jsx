@@ -11,8 +11,8 @@ const Chat = () => {
   const { logout } = useAuth0();
   return (
     <div className='container mx-auto'>
-      <div className='min-w-full border rounded lg:grid lg:grid-cols-3'>
-        <div className='border-r border-gray-300 lg:col-span-1'>
+      <div className='min-w-full border rounded lg:grid lg:grid-cols-4'>
+        <div className='border-r hidden lg:block border-gray-300 lg:col-span-1'>
           <div className='mx-3 my-3'>
             <div className='relative text-gray-600'>
               <span className='absolute inset-y-0 left-0 flex items-center pl-2'>
@@ -33,7 +33,7 @@ const Chat = () => {
             <Contact />
           </ul>
         </div>
-        <div className='hidden lg:col-span-2 lg:block'>
+        <div className='lg:col-span-3 lg:block'>
           <div className='w-full'>
             <div className='flex justify-between items-center border-b border-gray-300'>
               <MessageHeader />

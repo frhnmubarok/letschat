@@ -6,8 +6,8 @@ import { selectedUserState } from '../../store/recoil';
 import ContactList from '../ContactList';
 
 const GET_USERS = gql`
-  query MyQuery($order_by: [users_order_by!] = { name: desc }) {
-    users(order_by: $order_by) {
+  query MyQuery($order_by: [users_order_by!] = { name: desc }, $_neq: String = "") {
+    users(order_by: $order_by, where: { id: { _neq: $_neq } }) {
       id
       name
       picture
@@ -17,7 +17,7 @@ const GET_USERS = gql`
 
 const Contact = () => {
   const { user } = useAuth0();
-  const { data } = useQuery(GET_USERS, { variables: { order_by: { name: 'asc' } } });
+  const { data } = useQuery(GET_USERS, { variables: { order_by: { name: 'asc' }, _neq: user.sub } });
   console.log(data);
   const [selectedUser, setSelectedUser] = useRecoilState(selectedUserState);
   const users = [{ id: null, name: 'LOBBY' }];
