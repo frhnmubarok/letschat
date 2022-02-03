@@ -4,7 +4,7 @@ import Image from 'next/image';
 import React, { useState } from 'react';
 import styles from '../styles/Home.module.css';
 import { useAuth0 } from '@auth0/auth0-react';
-import { HiOutlineSearch } from 'react-icons/hi';
+import { MdLogin } from 'react-icons/md';
 import Chat from '../components/Chat';
 
 import { WebSocketLink } from '@apollo/client/link/ws';
@@ -74,9 +74,13 @@ export default function Home() {
       {isAuthenticated ? (
         <Chat />
       ) : (
-        <div className='max-w-5xl mx-auto text-center flex flex-col'>
-          <button onClick={() => loginWithRedirect()}>Login</button>
-          {isAuthenticated && <button onClick={() => logout()}>Logout</button>}
+        <div className='max-w-5xl mx-auto text-center flex justify-center items-center min-h-screen'>
+          <button
+            className='flex justify-center items-center text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-semibold rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 transition-all ease-in-out duration-300 hover:scale-110'
+            onClick={() => loginWithRedirect()}>
+            <MdLogin className='mr-2' />
+            Login
+          </button>
         </div>
       )}
     </ApolloProvider>
