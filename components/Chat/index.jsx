@@ -1,6 +1,6 @@
 import { useAuth0 } from '@auth0/auth0-react';
 import React from 'react';
-import { HiOutlineSearch, HiLogout } from 'react-icons/hi';
+import { HiOutlineSearch, HiOutlineLogout } from 'react-icons/hi';
 import Contact from '../Contact';
 import ContactList from '../ContactList';
 import Message from '../Message';
@@ -37,7 +37,7 @@ const Chat = () => {
           <div className='w-full'>
             <div className='flex justify-between items-center border-b border-gray-300'>
               <MessageHeader />
-              <HiLogout onClick={() => logout()} className='w-6 h-6 text-gray-600 mr-3 cursor-pointer' />
+              <HiOutlineLogout onClick={() => logout()} className='w-6 h-6 text-gray-600 mr-5 cursor-pointer' />
             </div>
             <Message />
             <MessageForm />
