@@ -11,9 +11,9 @@ import { RecoilRoot } from 'recoil';
 function MyApp({ Component, pageProps }) {
   return (
     <Auth0Provider
-      domain='dev-jt318qxr.us.auth0.com'
-      clientId='2ASh80PYVY32RUbRcpoMzXX7LADzj9BX'
-      redirectUri='http://localhost:3000'
+      domain={process.env.NEXT_PUBLIC_AUTH_DOMAIN}
+      clientId={process.env.NEXT_PUBLIC_AUTH_CLIENTID}
+      redirectUri={process.env.NEXT_PUBLIC_BASE_URL}
       scope='read:current_user update:current_user_metadata'>
       <RecoilRoot>
         <Component {...pageProps} />
