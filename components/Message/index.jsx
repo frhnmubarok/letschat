@@ -53,9 +53,17 @@ const Message = () => {
     };
   }
   const { data } = useSubscription(GET_MESSAGES, { variables: params });
+
+  setTimeout(() => {
+    const cb = document.getElementById('chat-content').parentElement;
+    if (cb) {
+      cb.scrollTop = cb.scrollHeight;
+    }
+  }, 200);
+
   return (
     <div className='relative w-full p-6 overflow-y-auto h-[37rem]'>
-      <ul className='space-y-2'>
+      <ul className='space-y-5' id='chat-content'>
         {/* <li className='flex justify-start'>
                   <div className='relative max-w-xl px-4 py-2 text-gray-700 rounded shadow'>
                     <span className='block'>Hi</span>

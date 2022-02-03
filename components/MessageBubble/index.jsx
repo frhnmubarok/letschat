@@ -7,16 +7,22 @@ const MessageBubble = ({ isMe, message, picture }) => {
   return (
     <li className={classNames('flex', isMe ? 'justify-end' : 'justify-start')}>
       {isMe ? (
-        <>
+        <div className='flex items-start'>
           <div
             className={classNames(
-              'relative max-w-xl px-4 py-2 text-gray-700 rounded shadow mr-2',
+              'relative max-w-xl px-4 py-2 text-gray-700 rounded-full shadow mr-2',
               isMe && 'bg-gray-100',
             )}>
-            <span className='block'>{message}</span>
+            <span className='block text-ellipsis overflow-hidden'>{message}</span>
           </div>
-          <Image src={picture} alt={picture} width={40} height={40} className='object-cover rounded-full' />
-        </>
+          <Image
+            src={picture}
+            alt={picture}
+            width={40}
+            height={40}
+            className='object-cover rounded-full aspect-square w-10'
+          />
+        </div>
       ) : (
         <>
           <Image
@@ -31,7 +37,7 @@ const MessageBubble = ({ isMe, message, picture }) => {
           />
           <div
             className={classNames(
-              'relative max-w-xl px-4 py-2 text-gray-700 rounded shadow ml-2',
+              'relative max-w-xl px-4 py-2 text-gray-700 rounded-full shadow ml-2',
               isMe && 'bg-gray-100',
             )}>
             <span className='block'>{message}</span>

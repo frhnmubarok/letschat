@@ -1,10 +1,9 @@
 import { useAuth0 } from '@auth0/auth0-react';
 import React from 'react';
-import { HiOutlineSearch } from 'react-icons/hi';
+import { HiOutlineSearch, HiLogout } from 'react-icons/hi';
 import Contact from '../Contact';
 import ContactList from '../ContactList';
 import Message from '../Message';
-import MessageBubble from '../MessageBubble';
 import MessageForm from '../MessageForm';
 import MessageHeader from '../MessageHeader';
 
@@ -38,9 +37,7 @@ const Chat = () => {
           <div className='w-full'>
             <div className='flex justify-between items-center border-b border-gray-300'>
               <MessageHeader />
-              <button className='mr-3' onClick={() => logout()}>
-                Logout
-              </button>
+              <HiLogout onClick={() => logout()} className='w-6 h-6 text-gray-600 mr-3 cursor-pointer' />
             </div>
             <Message />
             <MessageForm />

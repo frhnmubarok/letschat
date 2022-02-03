@@ -20,7 +20,7 @@ const Contact = () => {
   const { data } = useQuery(GET_USERS, { variables: { order_by: { name: 'asc' } } });
   console.log(data);
   const [selectedUser, setSelectedUser] = useRecoilState(selectedUserState);
-  const users = [{ id: null, name: 'Lobi' }];
+  const users = [{ id: null, name: 'LOBBY' }];
   if (data && data.users) {
     users.push(...data.users);
   }

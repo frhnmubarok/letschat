@@ -1,6 +1,9 @@
 import { gql, useMutation } from '@apollo/client';
+import { useAuth0 } from '@auth0/auth0-react';
 import React from 'react';
 import { useState } from 'react';
+import { useRecoilState } from 'recoil';
+import { selectedUserState } from '../../store/recoil';
 
 const INSERT_MESSAGE = gql`
   mutation MyMutation($fromUserId: String = "", $message: String = "", $toUserId: String = "") {
@@ -11,15 +14,16 @@ const INSERT_MESSAGE = gql`
 `;
 
 const MessageForm = () => {
+  const [message, setMessage] = useState('');
+  const [selectedUser, setSelectedUser] = useRecoilState(selectedUserState);
+  const { user } = useAuth0();
   const [insertMessage] = useMutation(INSERT_MESSAGE, {
     variables: {
-      fromUserId: null,
-      message: '',
-      toUserId: null,
+      fromUserId: user?.sub,
+      message,
+      toUserId: selectedUser?.id,
     },
   });
-
-  const [message, setMessage] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
