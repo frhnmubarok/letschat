@@ -1,5 +1,5 @@
 import { useAuth0 } from '@auth0/auth0-react';
-import React from 'react';
+import React, { useState } from 'react';
 import { HiOutlineSearch, HiOutlineLogout } from 'react-icons/hi';
 import Contact from '../Contact';
 import ContactList from '../ContactList';
@@ -9,6 +9,7 @@ import MessageHeader from '../MessageHeader';
 
 const Chat = () => {
   const { logout } = useAuth0();
+  const [search, setSearch] = useState('');
   return (
     <div className='container mx-auto'>
       <div className='min-w-full border rounded lg:grid lg:grid-cols-4'>
@@ -23,6 +24,8 @@ const Chat = () => {
                 className='block w-full py-2 pl-10 bg-gray-100 rounded outline-none'
                 name='search'
                 placeholder='Search'
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
                 required
               />
             </div>
@@ -30,7 +33,7 @@ const Chat = () => {
 
           <ul className='overflow-auto h-[32rem]'>
             <h2 className='my-2 mb-2 ml-2 text-lg text-gray-600'>Chats</h2>
-            <Contact />
+            <Contact search={search} />
           </ul>
         </div>
         <div className='lg:col-span-3 lg:block'>

@@ -15,7 +15,7 @@ const GET_USERS = gql`
   }
 `;
 
-const Contact = () => {
+const Contact = ({ search }) => {
   const { user } = useAuth0();
   const { data } = useQuery(GET_USERS, { variables: { order_by: { name: 'asc' }, _neq: user.sub } });
   console.log(data);
@@ -24,6 +24,8 @@ const Contact = () => {
   if (data && data.users) {
     users.push(...data.users);
   }
+
+  console.log(search);
   return (
     <div>
       <li>
