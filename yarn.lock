@@ -98,6 +98,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@babel/runtime@npm:7.9.6":
+  version: 7.9.6
+  resolution: "@babel/runtime@npm:7.9.6"
+  dependencies:
+    regenerator-runtime: ^0.13.4
+  checksum: 67cd41b670af1b2c5f7b5f0fb385b025dd645bfea0e43c0a46edf7599f84312383278333d023b9624743c986183076c96fbfeb9f8d302fe79bd134fa669d9a5c
+  languageName: node
+  linkType: hard
+
 "@babel/runtime@npm:^7.10.2, @babel/runtime@npm:^7.16.3":
   version: 7.16.7
   resolution: "@babel/runtime@npm:7.16.7"
@@ -251,6 +260,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@nextui-org/react@npm:^1.0.2-beta.3":
+  version: 1.0.2-beta.3
+  resolution: "@nextui-org/react@npm:1.0.2-beta.3"
+  dependencies:
+    "@babel/runtime": 7.9.6
+    "@stitches/react": 1.2.6
+  peerDependencies:
+    react: ">=16.8.0"
+    react-dom: ">=16.8.0"
+  checksum: a65a5ed8efe6e98a15ef2410849608da6fc7411c74a988f6d1786f0b8a8e6bf120f5e72279e0209018e148e0068ada8c131db357774090af04fcda00847fe900
+  languageName: node
+  linkType: hard
+
 "@nodelib/fs.scandir@npm:2.1.5":
   version: 2.1.5
   resolution: "@nodelib/fs.scandir@npm:2.1.5"
@@ -302,6 +324,15 @@ __metadata:
   version: 1.1.0
   resolution: "@rushstack/eslint-patch@npm:1.1.0"
   checksum: 4602c23454c8bb03502da12398cb5c4c0bfb3b1772535b418ec94ab8c47824f70e6ff32206a35fe7086042d9516959edea439e2371147b1de7eee50ef03ace65
+  languageName: node
+  linkType: hard
+
+"@stitches/react@npm:1.2.6":
+  version: 1.2.6
+  resolution: "@stitches/react@npm:1.2.6"
+  peerDependencies:
+    react: ">= 16.3.0"
+  checksum: 416088cdde17a22d6cdb04cf1cf756c6e5fc291dd7e41f82ce422bb95432ad32b6d990e7264d996d367c40bbc674d61be087e4e1f7b23eea7f81ef6266373a9c
   languageName: node
   linkType: hard
 
@@ -2413,6 +2444,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"moment@npm:^2.29.1":
+  version: 2.29.1
+  resolution: "moment@npm:2.29.1"
+  checksum: 1e14d5f422a2687996be11dd2d50c8de3bd577c4a4ca79ba5d02c397242a933e5b941655de6c8cb90ac18f01cc4127e55b4a12ae3c527a6c0a274e455979345e
+  languageName: node
+  linkType: hard
+
 "ms@npm:2.0.0":
   version: 2.0.0
   resolution: "ms@npm:2.0.0"
@@ -2532,14 +2570,18 @@ __metadata:
   dependencies:
     "@apollo/client": ^3.5.8
     "@auth0/auth0-react": ^1.9.0
+    "@nextui-org/react": ^1.0.2-beta.3
     autoprefixer: ^10.4.2
     env-cmd: ^10.1.0
     eslint: 8.8.0
     eslint-config-next: 12.0.9
     graphql: ^16.3.0
+    moment: ^2.29.1
     net: ^1.0.2
     next: 12.0.9
     postcss: ^8.4.5
+    prettier: ^2.5.1
+    prettier-plugin-tailwindcss: ^0.1.5
     react: 17.0.2
     react-dom: 17.0.2
     react-icons: ^4.3.1
@@ -2903,6 +2945,24 @@ __metadata:
   version: 1.2.1
   resolution: "prelude-ls@npm:1.2.1"
   checksum: cd192ec0d0a8e4c6da3bb80e4f62afe336df3f76271ac6deb0e6a36187133b6073a19e9727a1ff108cd8b9982e4768850d413baa71214dd80c7979617dca827a
+  languageName: node
+  linkType: hard
+
+"prettier-plugin-tailwindcss@npm:^0.1.5":
+  version: 0.1.5
+  resolution: "prettier-plugin-tailwindcss@npm:0.1.5"
+  peerDependencies:
+    prettier: ">=2.2.0"
+  checksum: f05efa727c19bcce30c780bd821e0dc8a20a1310ad8296cbe3b7a4a43b47fa93ecc2a29c076133e089dd1cc6b5b91eef58f088f4c0d0b32a0d51422d9d8b39bb
+  languageName: node
+  linkType: hard
+
+"prettier@npm:^2.5.1":
+  version: 2.5.1
+  resolution: "prettier@npm:2.5.1"
+  bin:
+    prettier: bin-prettier.js
+  checksum: 21b9408476ea1c544b0e45d51ceb94a84789ff92095abb710942d780c862d0daebdb29972d47f6b4d0f7ebbfb0ffbf56cc2cfa3e3e9d1cca54864af185b15b66
   languageName: node
   linkType: hard
 

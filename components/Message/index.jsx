@@ -1,9 +1,9 @@
-import { gql, useSubscription } from '@apollo/client';
-import { useAuth0 } from '@auth0/auth0-react';
-import React from 'react';
-import { useRecoilState } from 'recoil';
-import { selectedUserState } from '../../store/recoil';
-import MessageBubble from '../MessageBubble';
+import { gql, useSubscription } from "@apollo/client";
+import { useAuth0 } from "@auth0/auth0-react";
+import React from "react";
+import { useRecoilState } from "recoil";
+import { selectedUserState } from "../../store/recoil";
+import MessageBubble from "../MessageBubble";
 
 const GET_MESSAGES = gql`
   subscription MyQuery($where: messages_bool_exp = {}) {
@@ -55,15 +55,15 @@ const Message = () => {
   const { data } = useSubscription(GET_MESSAGES, { variables: params });
 
   setTimeout(() => {
-    const cb = document.getElementById('chat-content').parentElement;
+    const cb = document.getElementById("chat-content").parentElement;
     if (cb) {
       cb.scrollTop = cb.scrollHeight;
     }
   }, 200);
 
   return (
-    <div className='relative w-full p-6 overflow-y-auto h-[37rem]'>
-      <ul className='space-y-5' id='chat-content'>
+    <div className="relative h-[37rem] w-full overflow-y-auto p-6">
+      <ul className="space-y-5" id="chat-content">
         {/* <li className='flex justify-start'>
                   <div className='relative max-w-xl px-4 py-2 text-gray-700 rounded shadow'>
                     <span className='block'>Hi</span>
@@ -75,6 +75,8 @@ const Message = () => {
             isMe={user.sub === message.fromUserId}
             message={message.message}
             picture={message.fromUser.picture}
+            name={message.fromUser.name}
+            createdAt={message.createdAt}
           />
         ))}
       </ul>

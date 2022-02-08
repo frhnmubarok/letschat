@@ -1,20 +1,35 @@
-import Head from 'next/head';
-import Image from 'next/image';
+import Head from "next/head";
+import Image from "next/image";
 // import ws from 'ws';
-import React, { useState } from 'react';
-import styles from '../styles/Home.module.css';
-import { useAuth0 } from '@auth0/auth0-react';
-import { MdLogin } from 'react-icons/md';
-import Chat from '../components/Chat';
+import React, { useState } from "react";
+import styles from "../styles/Home.module.css";
+import { useAuth0 } from "@auth0/auth0-react";
+import { MdLogin } from "react-icons/md";
+import Chat from "../components/Chat";
 
-import { WebSocketLink } from '@apollo/client/link/ws';
-import { getMainDefinition } from '@apollo/client/utilities';
-import { setContext } from '@apollo/client/link/context';
-import { ApolloClient, InMemoryCache, ApolloProvider, split, HttpLink, ApolloLink } from '@apollo/client';
+import { WebSocketLink } from "@apollo/client/link/ws";
+import { getMainDefinition } from "@apollo/client/utilities";
+import { setContext } from "@apollo/client/link/context";
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  split,
+  HttpLink,
+  ApolloLink,
+} from "@apollo/client";
+import { Button, Loading, Text } from "@nextui-org/react";
 
 export default function Home() {
-  const [token, setToken] = useState('');
-  const { isAuthenticated, user, loginWithRedirect, getIdTokenClaims, logout, isLoading } = useAuth0();
+  const [token, setToken] = useState("");
+  const {
+    isAuthenticated,
+    user,
+    loginWithRedirect,
+    getIdTokenClaims,
+    logout,
+    isLoading,
+  } = useAuth0();
   getIdTokenClaims().then((response) => {
     if (response) {
       setToken(response.__raw);
@@ -30,7 +45,7 @@ export default function Home() {
           reconnect: true,
           connectionParams: {
             headers: {
-              Authorization: token ? `Bearer ${token}` : '',
+              Authorization: token ? `Bearer ${token}` : "",
             },
           },
         },
@@ -46,7 +61,7 @@ export default function Home() {
     return {
       headers: {
         ...headers,
-        authorization: token ? `Bearer ${token}` : '',
+        authorization: token ? `Bearer ${token}` : "",
       },
     };
   });
@@ -55,10 +70,13 @@ export default function Home() {
     ? split(
         ({ query }) => {
           const definition = getMainDefinition(query);
-          return definition.kind === 'OperationDefinition' && definition.operation === 'subscription';
+          return (
+            definition.kind === "OperationDefinition" &&
+            definition.operation === "subscription"
+          );
         },
         wsLink,
-        httpLink,
+        httpLink
       )
     : httpLink;
 
@@ -74,13 +92,21 @@ export default function Home() {
       {isAuthenticated ? (
         <Chat />
       ) : (
-        <div className='max-w-5xl mx-auto text-center flex justify-center items-center min-h-screen'>
-          <button
+        <div className="mx-auto flex min-h-screen max-w-5xl items-center justify-center text-center">
+          {/* <button
             className='flex justify-center items-center text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-semibold rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 transition-all ease-in-out duration-300 hover:scale-110'
             onClick={() => loginWithRedirect()}>
             <MdLogin className='mr-2' />
             Login
-          </button>
+          </button> */}
+          {isLoading ? (
+            <Loading type="points-opacity" color={"primary"} size="xl" />
+          ) : (
+            <Button auto shadow onClick={() => loginWithRedirect()}>
+              <MdLogin className="mr-2" />
+              Login
+            </Button>
+          )}
         </div>
       )}
     </ApolloProvider>
