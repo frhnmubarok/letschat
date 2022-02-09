@@ -62,7 +62,7 @@ const Message = () => {
   }, 200);
 
   return (
-    <div className="relative h-[30rem] w-full overflow-y-auto p-6">
+    <div className="relative h-[calc(100vh-192px)] w-full overflow-y-auto p-6">
       <ul className="space-y-5" id="chat-content">
         {data?.messages.map((message) => (
           <MessageBubble

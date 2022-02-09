@@ -22,7 +22,7 @@ const Chat = () => {
               </span>
               <input
                 type="search"
-                className="block w-full rounded-full bg-white p-4 pl-10 outline-none"
+                className="block w-full rounded-2xl bg-white p-4 pl-10 outline-none"
                 name="search"
                 placeholder="Search"
                 value={search}
