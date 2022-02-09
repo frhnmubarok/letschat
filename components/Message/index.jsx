@@ -62,13 +62,8 @@ const Message = () => {
   }, 200);
 
   return (
-    <div className="relative h-[37rem] w-full overflow-y-auto p-6">
+    <div className="relative h-[30rem] w-full overflow-y-auto p-6">
       <ul className="space-y-5" id="chat-content">
-        {/* <li className='flex justify-start'>
-                  <div className='relative max-w-xl px-4 py-2 text-gray-700 rounded shadow'>
-                    <span className='block'>Hi</span>
-                  </div>
-                </li> */}
         {data?.messages.map((message) => (
           <MessageBubble
             key={message.id}

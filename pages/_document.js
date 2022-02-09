@@ -3,7 +3,7 @@ import { CssBaseline } from "@nextui-org/react";
 
 export default function Document() {
   return (
-    <Html>
+    <Html className="bg-slate-100">
       <Head>{CssBaseline.flush()}</Head>
       <body>
         <Main />

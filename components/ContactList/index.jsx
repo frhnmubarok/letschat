@@ -19,7 +19,7 @@ const ContactList = ({ user }) => {
   return (
     <a
       key={id}
-      className="flex cursor-pointer items-center border-b border-gray-300 px-3 py-2 text-sm transition duration-150 ease-in-out hover:bg-gray-100 focus:outline-none"
+      className="flex cursor-pointer items-center px-3 py-2 text-sm transition duration-150 ease-in-out hover:bg-gray-100 focus:outline-none"
     >
       {/* <img className='object-cover w-10 h-10 rounded-full' src={picture} alt={name} /> */}
       {picture ? (

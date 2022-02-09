@@ -18,7 +18,15 @@ import {
   HttpLink,
   ApolloLink,
 } from "@apollo/client";
-import { Button, Loading, Text } from "@nextui-org/react";
+import {
+  Button,
+  Col,
+  Container,
+  Loading,
+  Row,
+  Spacer,
+  Text,
+} from "@nextui-org/react";
 
 export default function Home() {
   const [token, setToken] = useState("");
@@ -90,23 +98,51 @@ export default function Home() {
   return (
     <ApolloProvider client={client}>
       {isAuthenticated ? (
-        <Chat />
+        <div className="bg-slate-100">
+          <Chat />
+        </div>
       ) : (
-        <div className="mx-auto flex min-h-screen max-w-5xl items-center justify-center text-center">
-          {/* <button
+        <div className="bgPattern">
+          <div className="mx-auto flex min-h-screen max-w-5xl items-center justify-center text-center">
+            {/* <button
             className='flex justify-center items-center text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-semibold rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 transition-all ease-in-out duration-300 hover:scale-110'
             onClick={() => loginWithRedirect()}>
             <MdLogin className='mr-2' />
             Login
           </button> */}
-          {isLoading ? (
-            <Loading type="points-opacity" color={"primary"} size="xl" />
-          ) : (
-            <Button auto shadow onClick={() => loginWithRedirect()}>
-              <MdLogin className="mr-2" />
-              Login
-            </Button>
-          )}
+            {isLoading ? (
+              <Loading type="points-opacity" color={"primary"} size="xl" />
+            ) : (
+              <Container
+                display="flex"
+                direction="column"
+                justify="center"
+                alignItems="center"
+                alignContent="center"
+              >
+                <Text
+                  h1
+                  size={60}
+                  css={{
+                    textGradient: "45deg, $blue500 -20%, $pink500 50%",
+                  }}
+                  weight="bold"
+                >
+                  LetsChat
+                </Text>
+                <Spacer y={1} />
+                <Button
+                  auto
+                  className="shadow-lg"
+                  color={"gradient"}
+                  onClick={() => loginWithRedirect()}
+                >
+                  <MdLogin className="mr-2" />
+                  Login
+                </Button>
+              </Container>
+            )}
+          </div>
         </div>
       )}
     </ApolloProvider>

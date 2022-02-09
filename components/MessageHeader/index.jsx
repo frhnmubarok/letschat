@@ -6,7 +6,7 @@ const MessageHeader = () => {
   const [selectedUser, setSelectedUser] = useRecoilState(selectedUserState);
 
   return (
-    <div className="relative flex items-center p-3 ">
+    <div className="relative flex items-center p-1">
       <span className="ml-2 block font-bold text-gray-600">
         {selectedUser?.name}
       </span>
