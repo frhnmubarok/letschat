@@ -29,11 +29,8 @@ const ContactList = ({ user }) => {
         <HiChatAlt2 className="h-12 w-12 text-gray-500" />
       )}
       <div className="w-full">
-        <div className="">
+        <div className="flex justify-between">
           <span className="ml-2 block font-semibold text-gray-600">{name}</span>
-          <span className="ml-2 block text-xs font-normal text-gray-500">
-            awdawdwds
-          </span>
         </div>
       </div>
     </a>
