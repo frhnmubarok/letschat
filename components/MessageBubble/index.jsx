@@ -11,19 +11,21 @@ const MessageBubble = ({ isMe, message, picture, name, createdAt }) => {
       {isMe ? (
         <div className="flex items-start">
           <div>
-            <div
-              className={classNames(
-                "relative mr-2 max-w-xl rounded-full rounded-tr-none px-4 py-2 text-gray-700 shadow",
-                isMe && "bg-gray-100"
-              )}
-            >
-              <span className="block overflow-hidden text-ellipsis">
-                {message}
-              </span>
-            </div>
-            <p className="mr-3 mt-1 text-right text-xs text-gray-500">
-              {moment(createdAt).format("lll")}
+            <p className="mr-3 mb-1 text-right text-xs text-gray-500">
+              You, {moment(createdAt).calendar()}
             </p>
+            <div className="text-right">
+              <div
+                className={classNames(
+                  "relative mr-2 inline-block max-w-xl rounded-full rounded-tr-none px-4 py-2 text-gray-700 shadow",
+                  isMe && "bg-gray-100"
+                )}
+              >
+                <span className="block overflow-hidden text-ellipsis">
+                  {message}
+                </span>
+              </div>
+            </div>
           </div>
           <Tooltip content={name} placement="topEnd">
             <Avatar src={picture} squared />
@@ -35,19 +37,21 @@ const MessageBubble = ({ isMe, message, picture, name, createdAt }) => {
             <Avatar src={picture} squared />
           </Tooltip>
           <div className="flex flex-col">
-            <div
-              className={classNames(
-                "relative ml-2 max-w-xl rounded-full rounded-tl-none px-4 py-2 text-gray-700 shadow",
-                isMe && "bg-gray-100"
-              )}
-            >
-              <span className="block overflow-hidden text-ellipsis">
-                {message}
-              </span>
-            </div>
-            <p className="ml-3 mt-1 text-left text-xs text-gray-500">
-              {moment(createdAt).format("lll")}
+            <p className="ml-3 mb-1 text-left text-xs text-gray-500">
+              {name}, {moment(createdAt).calendar()}
             </p>
+            <div>
+              <div
+                className={classNames(
+                  "relative ml-2 inline-block max-w-xl rounded-full rounded-tl-none px-4 py-2 text-gray-700 shadow",
+                  isMe && "bg-gray-100"
+                )}
+              >
+                <span className="block overflow-hidden text-ellipsis">
+                  {message}
+                </span>
+              </div>
+            </div>
           </div>
         </div>
       )}
