@@ -21,7 +21,7 @@ const MessageBubble = ({ isMe, message, picture, name, createdAt }) => {
                   isMe && "bg-gray-100"
                 )}
               >
-                <span className="block overflow-hidden text-ellipsis">
+                <span className="block overflow-hidden text-ellipsis text-sm">
                   {message}
                 </span>
               </div>
@@ -47,7 +47,7 @@ const MessageBubble = ({ isMe, message, picture, name, createdAt }) => {
                   isMe && "bg-gray-100"
                 )}
               >
-                <span className="block overflow-hidden text-ellipsis">
+                <span className="block overflow-hidden text-ellipsis text-sm">
                   {message}
                 </span>
               </div>
