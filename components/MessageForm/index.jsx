@@ -44,7 +44,7 @@ const MessageForm = () => {
 
   return (
     <form onSubmit={handleSubmit} className="justify-end">
-      <div className="flex w-full items-center justify-between border-t border-gray-300 p-3">
+      <div className="flex w-full items-center justify-between p-3">
         <button>
           <svg
             xmlns="http://www.w3.org/2000/svg"

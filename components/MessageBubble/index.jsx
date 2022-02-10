@@ -7,7 +7,10 @@ import moment from "moment";
 const MessageBubble = ({ isMe, message, picture, name, createdAt }) => {
   console.log(picture);
   return (
-    <li className={classNames("flex", isMe ? "justify-end" : "justify-start")}>
+    <li
+      id="chat"
+      className={classNames("flex", isMe ? "justify-end" : "justify-start")}
+    >
       {isMe ? (
         <div className="flex items-start">
           <div>

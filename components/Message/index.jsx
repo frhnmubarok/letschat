@@ -61,6 +61,8 @@ const Message = () => {
     }
   }, 200);
 
+  // ScrollReveal.reveal("#chat");
+
   return (
     <div className="relative h-[calc(100vh-192px)] w-full overflow-y-auto p-6">
       <ul className="space-y-5" id="chat-content">

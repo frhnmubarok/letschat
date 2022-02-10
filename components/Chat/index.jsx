@@ -17,7 +17,7 @@ const Chat = () => {
         <div className="mr-3 hidden lg:col-span-1 lg:block">
           <div className="my-3">
             <div className="relative text-gray-600">
-              <span className="absolute inset-y-0 left-0 flex items-center pl-2">
+              <span className="absolute inset-y-0 left-0 flex items-center pl-3">
                 <HiOutlineSearch className="h-6 w-6 text-gray-300" />
               </span>
               <input
@@ -38,7 +38,7 @@ const Chat = () => {
             borderWeight={0}
             className="my-3"
           >
-            <ul className=" overflow-auto py-2">
+            <ul className="max-h-[calc(100vh-128px)] overflow-auto py-2">
               <h2 className="my-2 mb-2 ml-2 text-lg font-semibold text-gray-600">
                 LetsChat
               </h2>

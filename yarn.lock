@@ -2069,6 +2069,22 @@ __metadata:
   languageName: node
   linkType: hard
 
+"is-dom-node-list@npm:^1.2.1":
+  version: 1.2.1
+  resolution: "is-dom-node-list@npm:1.2.1"
+  dependencies:
+    is-dom-node: ^1.0.4
+  checksum: ce674ec53526afe7c071f134c92bd7ec98b944e4459ae82e77ba436d2e08b221aed53d8e32ce7a6c955f9aa2cf49ad619cc1b8a0a3bb996530841e8221729303
+  languageName: node
+  linkType: hard
+
+"is-dom-node@npm:^1.0.4":
+  version: 1.0.4
+  resolution: "is-dom-node@npm:1.0.4"
+  checksum: ba6e025076ca1bbe88fdf61a9beff69a769390e5f15c426edfa24acc6e129a05a8333cfa8fa587b07f8f0ca4096780f37e10391bf89aeeaafcd63be31564a496
+  languageName: node
+  linkType: hard
+
 "is-extglob@npm:^2.1.1":
   version: 2.1.1
   resolution: "is-extglob@npm:2.1.1"
@@ -2441,6 +2457,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"miniraf@npm:1.0.0":
+  version: 1.0.0
+  resolution: "miniraf@npm:1.0.0"
+  checksum: b39b78165da8772ab8437c53be3e1f7782f48ed821e9e51d620b10fbaab66805b2b3ae848373024cf0dfe0266a1e62fd7d8a105e4dc6d28b21d10777ddf3eb43
+  languageName: node
+  linkType: hard
+
 "minizlib@npm:^2.0.0, minizlib@npm:^2.1.1":
   version: 2.1.2
   resolution: "minizlib@npm:2.1.2"
@@ -2603,6 +2626,7 @@ __metadata:
     react-dom: 17.0.2
     react-icons: ^4.3.1
     recoil: ^0.6.1
+    scrollreveal: ^4.0.9
     subscriptions-transport-ws: ^0.11.0
     tailwindcss: ^3.0.18
     ws: ^8.4.2
@@ -3138,6 +3162,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"rematrix@npm:0.3.0":
+  version: 0.3.0
+  resolution: "rematrix@npm:0.3.0"
+  checksum: f3e8dc254e10f8cd950d0b7d6677b042644428be4ab8a940ecaf7237fbd33fc6d1e1af79fa4b6b073fe71d1e91b8df48b67d39cb0cf5a7cc1d39ee318cad5e42
+  languageName: node
+  linkType: hard
+
 "resolve-from@npm:^4.0.0":
   version: 4.0.0
   resolution: "resolve-from@npm:4.0.0"
@@ -3246,6 +3277,17 @@ __metadata:
     loose-envify: ^1.1.0
     object-assign: ^4.1.1
   checksum: c4b35cf967c8f0d3e65753252d0f260271f81a81e427241295c5a7b783abf4ea9e905f22f815ab66676f5313be0a25f47be582254db8f9241b259213e999b8fc
+  languageName: node
+  linkType: hard
+
+"scrollreveal@npm:^4.0.9":
+  version: 4.0.9
+  resolution: "scrollreveal@npm:4.0.9"
+  dependencies:
+    miniraf: 1.0.0
+    rematrix: 0.3.0
+    tealight: 0.3.6
+  checksum: 970f07b2e89d2c528df2836845622bd3d02aa085aa87612faa055f072cd7668c5e70627cff001bd6fb169ea1aade7f6d07d255e4488818a90b92c8127d8c3fdb
   languageName: node
   linkType: hard
 
@@ -3553,6 +3595,16 @@ __metadata:
     mkdirp: ^1.0.3
     yallist: ^4.0.0
   checksum: a04c07bb9e2d8f46776517d4618f2406fb977a74d914ad98b264fc3db0fe8224da5bec11e5f8902c5b9bcb8ace22d95fbe3c7b36b8593b7dfc8391a25898f32f
+  languageName: node
+  linkType: hard
+
+"tealight@npm:0.3.6":
+  version: 0.3.6
+  resolution: "tealight@npm:0.3.6"
+  dependencies:
+    is-dom-node: ^1.0.4
+    is-dom-node-list: ^1.2.1
+  checksum: f9262f9762b864267d52aab25c19a2f20cf438e08f11b79472fe258f19dea3e095c48c62116a39348ec69f82eae8d6bfcded84c0e188dd81020fcaf3d1657195
   languageName: node
   linkType: hard
 
