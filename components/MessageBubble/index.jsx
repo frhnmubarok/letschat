@@ -17,7 +17,7 @@ const MessageBubble = ({ isMe, message, picture, name, createdAt }) => {
             <div className="text-right">
               <div
                 className={classNames(
-                  "relative mr-2 inline-block max-w-xl rounded-full rounded-tr-none px-4 py-2 text-gray-700 shadow",
+                  "relative mr-2 inline-block max-w-xl rounded-2xl rounded-tr-none px-4 py-2 text-gray-700 shadow",
                   isMe && "bg-gray-100"
                 )}
               >
@@ -43,7 +43,7 @@ const MessageBubble = ({ isMe, message, picture, name, createdAt }) => {
             <div>
               <div
                 className={classNames(
-                  "relative ml-2 inline-block max-w-xl rounded-full rounded-tl-none px-4 py-2 text-gray-700 shadow",
+                  "relative ml-2 inline-block max-w-xl rounded-2xl rounded-tl-none px-4 py-2 text-gray-700 shadow",
                   isMe && "bg-gray-100"
                 )}
               >

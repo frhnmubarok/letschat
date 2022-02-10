@@ -1,5 +1,5 @@
 import { useAuth0 } from "@auth0/auth0-react";
-import { Card, Spacer } from "@nextui-org/react";
+import { Card, Spacer, Tooltip } from "@nextui-org/react";
 import React, { useState } from "react";
 import { HiOutlineSearch, HiOutlineLogout } from "react-icons/hi";
 import Contact from "../Contact";
@@ -56,10 +56,12 @@ const Chat = () => {
             >
               <div className="flex items-center justify-between">
                 <MessageHeader />
-                <HiOutlineLogout
-                  onClick={() => logout()}
-                  className="mr-3 h-6 w-6 cursor-pointer text-gray-600"
-                />
+                <Tooltip content={"Logout"} placement="left">
+                  <HiOutlineLogout
+                    onClick={() => logout()}
+                    className="mr-3 h-6 w-6 cursor-pointer text-gray-600"
+                  />
+                </Tooltip>
               </div>
             </Card>
             <Card

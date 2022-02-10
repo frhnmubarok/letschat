@@ -4,6 +4,7 @@ import React from "react";
 import { useState } from "react";
 import { useRecoilState } from "recoil";
 import { selectedUserState } from "../../store/recoil";
+import BadWordsFilter from "bad-words";
 
 const INSERT_MESSAGE = gql`
   mutation MyMutation(
