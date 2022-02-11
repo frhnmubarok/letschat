@@ -19,3 +19,8 @@ export const messageHeaderNameState = atom({
   key: "messageHeaderName",
   default: "LOBBY",
 });
+
+export const privateMessageCountState = atom({
+  key: "privateMessageCount",
+  default: 0,
+});
