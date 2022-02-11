@@ -3,7 +3,11 @@ import { useAuth0 } from "@auth0/auth0-react";
 import React from "react";
 import { useState } from "react";
 import { useRecoilState } from "recoil";
-import { selectedUserState } from "../../store/recoil";
+import {
+  isChatroomState,
+  selectedRoomState,
+  selectedUserState,
+} from "../../store/recoil";
 import BadWordsFilter from "bad-words";
 
 const INSERT_MESSAGE = gql`
@@ -24,9 +28,30 @@ const INSERT_MESSAGE = gql`
   }
 `;
 
+const INSERT_ROOM_MESSAGE = gql`
+  mutation MyMutation2(
+    $fromUserId: String = ""
+    $message: String = ""
+    $toRoomId: uuid = ""
+  ) {
+    insert_room_messages_one(
+      object: {
+        fromUserId: $fromUserId
+        message: $message
+        toRoomId: $toRoomId
+      }
+    ) {
+      id
+    }
+  }
+`;
+
 const MessageForm = () => {
   const [message, setMessage] = useState("");
   const [selectedUser, setSelectedUser] = useRecoilState(selectedUserState);
+  const [selectedRoom, setSelectedRoom] = useRecoilState(selectedRoomState);
+  const [isChatroom, setIsChatroom] = useRecoilState(isChatroomState);
+
   const { user } = useAuth0();
   const [insertMessage] = useMutation(INSERT_MESSAGE, {
     variables: {
@@ -35,10 +60,17 @@ const MessageForm = () => {
       toUserId: selectedUser?.id,
     },
   });
+  const [insertRoomMessage] = useMutation(INSERT_ROOM_MESSAGE, {
+    variables: {
+      fromUserId: user?.sub,
+      message,
+      toRoomId: selectedRoom?.id,
+    },
+  });
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    insertMessage();
+    isChatroom ? insertRoomMessage() : insertMessage();
     setMessage("");
   };
 

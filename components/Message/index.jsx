@@ -2,7 +2,11 @@ import { gql, useSubscription } from "@apollo/client";
 import { useAuth0 } from "@auth0/auth0-react";
 import React from "react";
 import { useRecoilState } from "recoil";
-import { selectedUserState } from "../../store/recoil";
+import {
+  isChatroomState,
+  selectedRoomState,
+  selectedUserState,
+} from "../../store/recoil";
 import MessageBubble from "../MessageBubble";
 
 const GET_MESSAGES = gql`
@@ -20,18 +24,41 @@ const GET_MESSAGES = gql`
   }
 `;
 
+const GET_CHATROOM_MESSAGES = gql`
+  subscription MyQuery($where: room_messages_bool_exp = {}) {
+    room_messages(where: $where) {
+      fromUserId
+      id
+      message
+      user {
+        name
+        picture
+      }
+      toRoomId
+      room {
+        roomName
+        id
+      }
+      createdAt
+    }
+  }
+`;
+
 const Message = () => {
   const [selectedUser, setSelectedUser] = useRecoilState(selectedUserState);
+  const [selectedRoom, setSelectedRoom] = useRecoilState(selectedRoomState);
+  const [isChatroom, setIsChatroom] = useRecoilState(isChatroomState);
   const { user } = useAuth0();
-  let params = { where: {} };
+  let userParams = { where: {} };
+  let roomParams = { where: {} };
   if (selectedUser && !selectedUser.id) {
-    params.where = {
+    userParams.where = {
       toUserId: {
         _is_null: true,
       },
     };
   } else if (selectedUser && selectedUser.id) {
-    params.where = {
+    userParams.where = {
       _or: [
         {
           fromUserId: {
@@ -52,7 +79,24 @@ const Message = () => {
       ],
     };
   }
-  const { data } = useSubscription(GET_MESSAGES, { variables: params });
+  if (selectedRoom && selectedRoom.id) {
+    roomParams.where = {
+      toRoomId: {
+        _eq: selectedRoom.id,
+      },
+    };
+  }
+
+  const { data: messagesData } = useSubscription(GET_MESSAGES, {
+    variables: userParams,
+  });
+  const { data: roomMessagesData } = useSubscription(GET_CHATROOM_MESSAGES, {
+    variables: roomParams,
+  });
+  // const messages = [];
+  // if (messagesData && messagesData.messages) {
+  //   messages.push(...messagesData.messages);
+  // }
 
   setTimeout(() => {
     const cb = document.getElementById("chat-content").parentElement;
@@ -66,16 +110,28 @@ const Message = () => {
   return (
     <div className="relative h-[calc(100vh-192px)] w-full overflow-y-auto p-6">
       <ul className="space-y-5" id="chat-content">
-        {data?.messages.map((message) => (
-          <MessageBubble
-            key={message.id}
-            isMe={user.sub === message.fromUserId}
-            message={message.message}
-            picture={message.fromUser.picture}
-            name={message.fromUser.name}
-            createdAt={message.createdAt}
-          />
-        ))}
+        {!isChatroom &&
+          messagesData?.messages.map((message) => (
+            <MessageBubble
+              key={message.id}
+              isMe={user.sub === message.fromUserId}
+              message={message.message}
+              picture={message.fromUser.picture}
+              name={message.fromUser.name}
+              createdAt={message.createdAt}
+            />
+          ))}
+        {isChatroom &&
+          roomMessagesData?.room_messages.map((message) => (
+            <MessageBubble
+              key={message.id}
+              isMe={user.sub === message.fromUserId}
+              message={message.message}
+              picture={message.user.picture}
+              name={message.user.name}
+              createdAt={message.createdAt}
+            />
+          ))}
       </ul>
     </div>
   );

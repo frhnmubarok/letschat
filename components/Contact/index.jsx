@@ -2,7 +2,7 @@ import { gql, useQuery } from "@apollo/client";
 import { useAuth0 } from "@auth0/auth0-react";
 import React from "react";
 import { useRecoilState } from "recoil";
-import { selectedUserState } from "../../store/recoil";
+import { isChatroomState, selectedUserState } from "../../store/recoil";
 import ContactList from "../ContactList";
 
 const GET_USERS = gql`
@@ -20,14 +20,15 @@ const GET_USERS = gql`
 
 const Contact = ({ search }) => {
   const { user } = useAuth0();
-  const { data } = useQuery(GET_USERS, {
+  const { data: usersData } = useQuery(GET_USERS, {
     variables: { order_by: { name: "asc" }, _neq: user.sub },
   });
-  console.log(data);
   const [selectedUser, setSelectedUser] = useRecoilState(selectedUserState);
+  const [isChatroom, setIsChatroom] = useRecoilState(isChatroomState);
+
   const users = [{ id: null, name: "LOBBY" }];
-  if (data && data.users) {
-    users.push(...data.users);
+  if (usersData && usersData.users) {
+    users.push(...usersData.users);
   }
 
   console.log(search);
@@ -35,10 +36,16 @@ const Contact = ({ search }) => {
     <div>
       <li>
         {users.map((user) => (
-          <div key={user.id} onClick={() => setSelectedUser(user)}>
+          <div
+            key={user.id}
+            onClick={() => {
+              setIsChatroom(false);
+              setSelectedUser(user);
+            }}
+          >
             <ContactList user={user} />
             {user.name === "LOBBY" && (
-              <p className="mt-3 pb-2 pl-4 text-xs font-semibold uppercase tracking-widest text-gray-500">
+              <p className="mt-6 pb-2 pl-2 text-xs font-semibold uppercase tracking-widest text-gray-500">
                 private message
               </p>
             )}
