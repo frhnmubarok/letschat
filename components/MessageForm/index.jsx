@@ -8,7 +8,6 @@ import {
   selectedRoomState,
   selectedUserState,
 } from "../../store/recoil";
-import BadWordsFilter from "bad-words";
 
 const INSERT_MESSAGE = gql`
   mutation MyMutation(

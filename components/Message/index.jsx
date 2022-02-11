@@ -93,10 +93,6 @@ const Message = () => {
   const { data: roomMessagesData } = useSubscription(GET_CHATROOM_MESSAGES, {
     variables: roomParams,
   });
-  // const messages = [];
-  // if (messagesData && messagesData.messages) {
-  //   messages.push(...messagesData.messages);
-  // }
 
   setTimeout(() => {
     const cb = document.getElementById("chat-content").parentElement;
@@ -104,8 +100,6 @@ const Message = () => {
       cb.scrollTop = cb.scrollHeight;
     }
   }, 200);
-
-  // ScrollReveal.reveal("#chat");
 
   return (
     <div className="relative h-[calc(100vh-192px)] w-full overflow-y-auto p-6">

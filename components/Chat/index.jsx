@@ -21,6 +21,8 @@ import MessageForm from "../MessageForm";
 import MessageHeader from "../MessageHeader";
 import Chatroom from "../Chatroom";
 import { gql, useMutation } from "@apollo/client";
+import toast from "react-hot-toast";
+import { classNames } from "../../utils/helpers";
 
 const CREATE_ROOM = gql`
   mutation MyMutation(
@@ -60,7 +62,6 @@ const Chat = () => {
   const handler = () => setVisible(true);
   const closeHandler = () => {
     setVisible(false);
-    console.log("closed");
   };
 
   const handleChange = (event) => {
@@ -77,7 +78,11 @@ const Chat = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    createRoom();
+    if (inputs.roomName.length > 0) {
+      createRoom();
+      toast.success("Room created!");
+      setVisible(false);
+    }
     // alert(inputs);
     console.log(inputs);
   };
@@ -126,30 +131,32 @@ const Chat = () => {
                   open={visible}
                   onClose={closeHandler}
                 >
-                  <form onSubmit={handleSubmit}>
-                    <Modal.Header>
-                      <Text id="modal-title" size={18}>
-                        Create Chatroom
-                      </Text>
-                    </Modal.Header>
-                    <Modal.Body>
+                  <Modal.Header>
+                    <Text id="modal-title" size={18}>
+                      Create Chatroom
+                    </Text>
+                  </Modal.Header>
+                  <Modal.Body>
+                    <form>
                       <Input
                         clearable
-                        bordered
                         fullWidth
+                        underlined
+                        required={true}
                         color="primary"
-                        size="lg"
+                        size="md"
                         placeholder="Room Name"
                         name="roomName"
                         value={inputs.roomName}
                         onChange={handleChange}
+                        className="my-2"
                       />
-                      <Input
+                      <Input.Password
                         clearable
-                        bordered
                         fullWidth
+                        underlined
                         color="primary"
-                        size="lg"
+                        size="md"
                         placeholder="Room Password"
                         name="password"
                         value={inputs.password}
@@ -173,17 +180,26 @@ const Chat = () => {
                           Private
                         </Radio>
                       </Radio.Group>
-                    </Modal.Body>
-                    <Modal.Footer>
-                      <Button auto flat color="error" onClick={closeHandler}>
-                        Close
-                      </Button>
-                      <Button auto color={"primary"} onClick={closeHandler}>
-                        <input type="submit" className="hidden" />
-                        Create
-                      </Button>
-                    </Modal.Footer>
-                  </form>
+                    </form>
+                  </Modal.Body>
+                  <Modal.Footer>
+                    <button
+                      onClick={closeHandler}
+                      className="rounded-lg bg-gray-200 px-4 py-2 text-gray-700 shadow-md transition-all ease-in-out hover:bg-gray-300"
+                    >
+                      Cancel
+                    </button>
+                    <button
+                      onClick={handleSubmit}
+                      disabled={inputs.roomName.length === 0}
+                      className={classNames(
+                        "cursor-not-allowed rounded-lg bg-blue-500 px-4 py-2 text-white shadow-md transition-all ease-in-out hover:bg-blue-600 disabled:opacity-50",
+                        inputs.roomName.length > 0 ? "" : "opacity-50"
+                      )}
+                    >
+                      Create
+                    </button>
+                  </Modal.Footer>
                 </Modal>
               </div>
               <Chatroom />

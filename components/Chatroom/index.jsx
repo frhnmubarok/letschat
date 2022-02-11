@@ -28,11 +28,6 @@ const Chatroom = ({ search }) => {
   const [selectedRoom, setSelectedRoom] = useRecoilState(selectedRoomState);
   const [isChatroom, setIsChatroom] = useRecoilState(isChatroomState);
 
-  // const users = [{ id: null, name: "LOBBY" }];
-  // if (usersData && usersData.users) {
-  //   users.push(...usersData.users);
-  // }
-
   console.log(search);
   return (
     <div>

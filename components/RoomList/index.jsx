@@ -29,12 +29,6 @@ const RoomList = ({ room }) => {
       }}
       className="flex cursor-pointer items-center px-3 py-1 text-sm transition duration-150 ease-in-out hover:rounded-lg hover:bg-gray-100 focus:outline-none"
     >
-      {/* <img className='object-cover w-10 h-10 rounded-full' src={picture} alt={name} /> */}
-      {/* {picture ? (
-        <Avatar src={picture} squared />
-      ) : (
-        <HiChatAlt2 className="h-12 w-12 text-gray-500" />
-      )} */}
       <HiChatAlt2 className="h-10 w-10 text-gray-500" />
       <div className="w-full">
         <div className="flex justify-between">

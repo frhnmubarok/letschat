@@ -15,6 +15,7 @@ import {
 import { useState } from "react/cjs/react.production.min";
 import { RecoilRoot } from "recoil";
 import { NextUIProvider } from "@nextui-org/react";
+import { Toaster } from "react-hot-toast";
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -27,6 +28,7 @@ function MyApp({ Component, pageProps }) {
       <RecoilRoot>
         <NextUIProvider>
           <Component {...pageProps} />
+          <Toaster />
         </NextUIProvider>
       </RecoilRoot>
     </Auth0Provider>
