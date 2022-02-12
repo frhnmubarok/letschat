@@ -151,7 +151,9 @@ const Message = () => {
                 <p className="text-sm font-medium text-gray-900">
                   {senderName}
                 </p>
-                <p className="mt-1 text-sm text-gray-500">{newMessage}</p>
+                <p className="mt-1 block overflow-hidden text-ellipsis text-sm text-gray-500">
+                  {newMessage}
+                </p>
               </div>
             </div>
           </div>
