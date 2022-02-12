@@ -126,11 +126,12 @@ const Message = () => {
       privateMessageData?.messages.length > privateMessageCount &&
       privateMessageCount !== 0
     ) {
-      const newMessage = privateMessageData.messages.pop().message;
-      const senderName = privateMessageData.messages.pop().fromUser.name;
-      const senderPhoto = privateMessageData.messages.pop().fromUser.picture;
-      console.log(privateMessageData.messages.pop());
-      console.log(privateMessageCount);
+      const messagesArr =
+        privateMessageData.messages[privateMessageData.messages.length - 1];
+      const newMessage = messagesArr.message;
+      const senderName = messagesArr.fromUser.name;
+      const senderPhoto = messagesArr.fromUser.picture;
+      console.log(messagesArr);
       toast.custom((t) => (
         <div
           className={`${
