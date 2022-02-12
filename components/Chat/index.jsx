@@ -1,21 +1,9 @@
 import { useAuth0 } from "@auth0/auth0-react";
-import {
-  Button,
-  Card,
-  Checkbox,
-  Input,
-  Modal,
-  Radio,
-  Row,
-  Spacer,
-  Text,
-  Tooltip,
-} from "@nextui-org/react";
+import { Card, Input, Modal, Radio, Text, Tooltip } from "@nextui-org/react";
 import React, { useState } from "react";
 import { HiOutlineSearch, HiOutlineLogout } from "react-icons/hi";
 import { BiMessageRoundedAdd } from "react-icons/bi";
 import Contact from "../Contact";
-import ContactList from "../ContactList";
 import Message from "../Message";
 import MessageForm from "../MessageForm";
 import MessageHeader from "../MessageHeader";
@@ -130,6 +118,7 @@ const Chat = () => {
                   aria-labelledby="modal-title"
                   open={visible}
                   onClose={closeHandler}
+                  className="cursor-default"
                 >
                   <Modal.Header>
                     <Text id="modal-title" size={18}>
@@ -193,7 +182,7 @@ const Chat = () => {
                       onClick={handleSubmit}
                       disabled={inputs.roomName.length === 0}
                       className={classNames(
-                        "cursor-not-allowed rounded-lg bg-blue-500 px-4 py-2 text-white shadow-md transition-all ease-in-out hover:bg-blue-600 disabled:opacity-50",
+                        "rounded-lg bg-blue-500 px-4 py-2 text-white shadow-md transition-all ease-in-out hover:bg-blue-600 disabled:cursor-not-allowed disabled:opacity-50",
                         inputs.roomName.length > 0 ? "" : "opacity-50"
                       )}
                     >
